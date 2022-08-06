@@ -10,8 +10,7 @@ import streamlit as st
 #                                        'Contribution':['20%','20%','20%','20%','20%']})
 st.set_page_config(
      page_title="AISC1000 Python Case Study 2",
-     page_icon="🧊",
-     layout="wide"
+     page_icon="🧊"
  )
 
 # '''
