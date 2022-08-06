@@ -145,7 +145,7 @@ pl_dict = json.load(open(r"player_stats.txt"))
 st.session_state.data = pl_dict
 # options()
 def get_data():
-    pl_dict = json.load(open(r"C:\Users\vrajb\Downloads\player_stats.txt"))
+    pl_dict = json.load(open(r"player_stats.txt"))
     return pl_dict
     
 
@@ -155,7 +155,7 @@ tab1, tab2, tab3 = st.tabs(["Display All Players", "Edit Player data","Credits"]
 
 with tab1:
     if st.button('Load Data'):
-        pl_dict = json.load(open(r"C:\Users\vrajb\Downloads\player_stats.txt"))
+        pl_dict = json.load(open(r"player_stats.txt"))
         st.session_state.data = pl_dict
     st.dataframe(st.session_state.data)
 
@@ -177,7 +177,7 @@ with tab2:
             pl_dict = st.session_state.data
             pl_dict[name] = {'Wins':wins, 'Losses':loss, 'Ties':ties}
 
-            json.dump(pl_dict, open(r"C:\Users\vrajb\Downloads\player_stats.txt",'w'))
+            json.dump(pl_dict, open(r"player_stats.txt",'w'))
             st.session_state.data = pl_dict
             st.success('Player '+ name +' added successfully!')
             st.balloons()
@@ -187,12 +187,12 @@ with tab2:
         form = st.form(key="delete", clear_on_submit = True)
         with form:
             cols = st.columns((1))
-            name = cols[0].selectbox("Name of the Player", [ _ for _ in st.session_state.data.keys()])
+            del_name = cols[0].selectbox("Name of the Player", [ _ for _ in st.session_state.data.keys()])
             deleted = st.form_submit_button(label="Submit")
         if deleted:
             pl_dict = st.session_state.data
-            del pl_dict[name]
-            json.dump(pl_dict, open(r"C:\Users\vrajb\Downloads\player_stats.txt",'w'))
+            del pl_dict[del_name]
+            json.dump(pl_dict, open(r"player_stats.txt",'w'))
             st.session_state.data = pl_dict
             st.success('Player '+ name +' deleted successfully!')
 
