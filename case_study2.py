@@ -140,9 +140,9 @@ def options():
         else:
             print("Invalid input! Enter again... ")
 
-DATA_URL = ('https://drive.google.com/file/d/1mZxNbId8NNpEJBXMpvLO9oMdX52H7UQL/view?usp=sharing')
-pl_dict = json.load(open(DATA_URL))
-st.session_state.data = DATA_URL
+# DATA_URL = ('https://drive.google.com/file/d/1mZxNbId8NNpEJBXMpvLO9oMdX52H7UQL/view?usp=sharing')
+pl_dict = json.load(open(r"player_stats.txt"))
+st.session_state.data = pl_dict
 # options()
 def get_data():
     pl_dict = json.load(open(r"C:\Users\vrajb\Downloads\player_stats.txt"))
