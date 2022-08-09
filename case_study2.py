@@ -179,7 +179,7 @@ st.title("Python Case Study 2")
 tab1, tab2, tab3 = st.tabs(["Display All Players", "Edit Player data","Credits"])
 
 with tab1:
-    if st.button('Load Data'):
+    if st.button('Refresh Data'):
         pl_dict = json.load(open(r"player_stats.txt"))
         st.session_state.data = pl_dict
     st.dataframe(st.session_state.data)
