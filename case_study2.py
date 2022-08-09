@@ -19,6 +19,7 @@ st.set_page_config(
  )
 
 
+# function for setting backgroung image
 def get_base64(bin_file):
     with open(bin_file, 'rb') as f:
         data = f.read()
@@ -166,13 +167,17 @@ print("\n############### GAME STATS PROGRAM ###############")
 #         else:
 #             print("Invalid input! Enter again... ")
 
+# accessing the file 
 pl_dict = json.load(open(r"player_stats.txt"))
 st.session_state.data = pl_dict
 # options()
+
+# function for load data
 def get_data():
     pl_dict = json.load(open(r"player_stats.txt"))
     return pl_dict
-    
+
+#   
 st.markdown("<h1 style='text-align: center; color: blue;'>Game Stats Program</h1>", unsafe_allow_html=True)
 st.title("Python Case Study 2")
 
@@ -230,6 +235,6 @@ with tab2:
 
 with tab3:
     st.write(pd.DataFrame({'Member name':['Dalveer Kaur', 'Priyanka Sharma', 'Saghithya S. Nateson','Surya Bansal','Vrajeshkumar Bhatt'],
-                                       'ID':[500208166,500208166,500203662,500210660,500209114],
+                                       'ID':[500208166,500198416,500203662,500210660,500209114],
                                        'Tasks':['Coding','CLI Formatting','File Handling','Coding','Web GUI'],
                                        'Contribution':['20%','20%','20%','20%','20%']}))
