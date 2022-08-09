@@ -1,3 +1,4 @@
+import base64
 import json
 import sys
 import pandas as pd
@@ -9,9 +10,35 @@ import streamlit as st
 #                                        'Tasks':['Coding','CLI Formatting','File Handling','Coding','Web GUI'],
 #                                        'Contribution':['20%','20%','20%','20%','20%']})
 st.set_page_config(
-     page_title="AISC1000 Python Case Study 2",
-     page_icon="🧊"
+    page_title="AISC1000 Python Case Study 2",
+    page_icon="🧊"
+    # base="dark"
+    # primaryColor="#5f9cfb"
+    # backgroundColor="#011131"
+    # textColor="#ffffff"
  )
+
+
+def get_base64(bin_file):
+    with open(bin_file, 'rb') as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
+
+def set_background(png_file):
+    bin_str = get_base64(png_file)
+    page_bg_img = '''
+    <style>
+    .stApp {
+    background-image: url("data:image/png;base64,%s");
+    background-size: cover;
+    background-repeat: no-repeat;
+    }   
+    </style>
+    ''' % bin_str
+    st.markdown(page_bg_img, unsafe_allow_html=True)
+
+set_background(r'bg_img.jpg')
+
 
 # '''
 # # Code used to store our dictionary into a txt file
@@ -139,7 +166,6 @@ def options():
         else:
             print("Invalid input! Enter again... ")
 
-# DATA_URL = ('https://drive.google.com/file/d/1mZxNbId8NNpEJBXMpvLO9oMdX52H7UQL/view?usp=sharing')
 pl_dict = json.load(open(r"player_stats.txt"))
 st.session_state.data = pl_dict
 # options()
@@ -147,8 +173,8 @@ def get_data():
     pl_dict = json.load(open(r"player_stats.txt"))
     return pl_dict
     
-
-st.title("Game Stats Program \n Python Case Study 2")
+st.markdown("<h1 style='text-align: center; color: blue;'>Game Stats Program</h1>", unsafe_allow_html=True)
+st.title("Python Case Study 2")
 
 tab1, tab2, tab3 = st.tabs(["Display All Players", "Edit Player data","Credits"])
 
