@@ -1,4 +1,3 @@
-
 import base64
 import json
 import sys
@@ -56,7 +55,7 @@ set_background(r'bg_img.jpg')
 # Reading the dictionary stored in the file
 
 
-# print("\n############### GAME STATS PROGRAM ###############")
+print("\n############### GAME STATS PROGRAM ###############")
 
 # def opt1():
 #     while(True):
@@ -196,17 +195,15 @@ with tab2:
             loss = cols[1].number_input("Enter player losses\t: ",min_value = 0,step = 1)
             ties = cols[1].number_input("Enter player ties\t: ",min_value = 0,step = 1)
             submitted = st.form_submit_button(label="Submit")
-
             # except:
             #     st.write("Invalid data entered, Kindly enter numeric data.")
 
         if submitted:
-            print(type(name))
             if len(name) == 0:
                 st.warning('You can not leave name empty')
             elif name.isnumeric() == True:
+                print('int')
                 st.warning('Invalid input, please try it again')
-            
             else:
                 pl_dict = st.session_state.data
                 pl_dict[name] = {'Wins':wins, 'Losses':loss, 'Ties':ties}
